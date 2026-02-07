@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🏠 House Price Predictor</h1>
+                <p class="tagline">Prediction Results</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            
+            {% if error %}
+                <!-- Error Display -->
+                <div class="result-card error-card">
+                    <div class="error-icon">⚠️</div>
+                    <h2>Prediction Failed</h2>
+                    <p class="error-message">{{ error }}</p>
+                    <a href="/" class="back-link">← Try Again</a>
+                </div>
+            
+            {% else %}
+                <!-- Success Display -->
+                <div class="result-card">
+                    
+                    <!-- Price Display -->
+                    <div class="price-section">
+                        <div class="success-icon">✓</div>
+                        <h2>Estimated Property Value</h2>
+                        <div class="price-display">{{ price }}</div>
+                        <p class="price-note">Based on machine learning analysis</p>
+                    </div>
+
+                    <!-- Property Summary -->
+                    <div class="summary-section">
+                        <h3>Property Summary</h3>
+                        <div class="summary-grid">
+                            
+                            <div class="summary-item">
+                                <div class="item-icon">📐</div>
+                                <div class="item-details">
+                                    <span class="item-label">Area</span>
+                                    <span class="item-value">{{ area }} sq ft</span>
+                                </div>
+                            </div>
+
+                            <div class="summary-item">
+                                <div class="item-icon">🛏️</div>
+                                <div class="item-details">
+                                    <span class="item-label">Bedrooms</span>
+                                    <span class="item-value">{{ bedrooms }}</span>
+                                </div>
+                            </div>
+
+                            <div class="summary-item">
+                                <div class="item-icon">🚿</div>
+                                <div class="item-details">
+                                    <span class="item-label">Bathrooms</span>
+                                    <span class="item-value">{{ bathrooms }}</span>
+                                </div>
+                            </div>
+
+                            <div class="summary-item">
+                                <div class="item-icon">🏢</div>
+                                <div class="item-details">
+                                    <span class="item-label">Floors</span>
+                                    <span class="item-value">{{ floors }}</span>
+                                </div>
+                            </div>
+
+                            <div class="summary-item">
+                                <div class="item-icon">📅</div>
+                                <div class="item-details">
+                                    <span class="item-label">Year Built</span>
+                                    <span class="item-value">{{ year_built }}</span>
+                                </div>
+                            </div>
+
+                            <div class="summary-item">
+                                <div class="item-icon">📍</div>
+                                <div class="item-details">
+                                    <span class="item-label">Location</span>
+                                    <span class="item-value">{{ location_score }}/10</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-section">
+                        <a href="/" class="action-btn primary">
+                            <span>← New Prediction</span>
+                        </a>
+                    </div>
+
+                </div>
+            {% endif %}
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by Machine Learning • Scikit-learn & Flask</p>
+        </footer>
+    </div>
+</body>
+</html>

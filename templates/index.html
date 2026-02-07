@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🏠 House Price Predictor</h1>
+                <p class="tagline">AI-Powered Real Estate Valuation System</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="form-wrapper">
+                <div class="form-header">
+                    <h2>Property Details</h2>
+                    <p>Enter the following information to estimate the property value</p>
+                </div>
+
+                <form action="/predict" method="POST" class="prediction-form">
+                    
+                    <!-- Area -->
+                    <div class="form-group">
+                        <label for="area">
+                            <span class="label-icon">📐</span>
+                            <span class="label-text">Area (sq ft)</span>
+                        </label>
+                        <input type="number" 
+                               id="area" 
+                               name="area" 
+                               class="form-input"
+                               min="100" 
+                               max="10000" 
+                               required 
+                               placeholder="e.g., 2500">
+                        <span class="help-text">Property size in square feet</span>
+                    </div>
+
+                    <!-- Two Column Layout -->
+                    <div class="form-row">
+                        <!-- Bedrooms -->
+                        <div class="form-group">
+                            <label for="bedrooms">
+                                <span class="label-icon">🛏️</span>
+                                <span class="label-text">Bedrooms</span>
+                            </label>
+                            <input type="number" 
+                                   id="bedrooms" 
+                                   name="bedrooms" 
+                                   class="form-input"
+                                   min="1" 
+                                   max="10" 
+                                   required 
+                                   placeholder="3">
+                        </div>
+
+                        <!-- Bathrooms -->
+                        <div class="form-group">
+                            <label for="bathrooms">
+                                <span class="label-icon">🚿</span>
+                                <span class="label-text">Bathrooms</span>
+                            </label>
+                            <input type="number" 
+                                   id="bathrooms" 
+                                   name="bathrooms" 
+                                   class="form-input"
+                                   min="1" 
+                                   max="10" 
+                                   required 
+                                   placeholder="2">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <!-- Floors -->
+                        <div class="form-group">
+                            <label for="floors">
+                                <span class="label-icon">🏢</span>
+                                <span class="label-text">Floors</span>
+                            </label>
+                            <input type="number" 
+                                   id="floors" 
+                                   name="floors" 
+                                   class="form-input"
+                                   min="1" 
+                                   max="5" 
+                                   required 
+                                   placeholder="2">
+                        </div>
+
+                        <!-- Year Built -->
+                        <div class="form-group">
+                            <label for="year_built">
+                                <span class="label-icon">📅</span>
+                                <span class="label-text">Year Built</span>
+                            </label>
+                            <input type="number" 
+                                   id="year_built" 
+                                   name="year_built" 
+                                   class="form-input"
+                                   min="1950" 
+                                   max="2024" 
+                                   required 
+                                   placeholder="2015">
+                        </div>
+                    </div>
+
+                    <!-- Location Score -->
+                    <div class="form-group">
+                        <label for="location_score">
+                            <span class="label-icon">📍</span>
+                            <span class="label-text">Location Score</span>
+                        </label>
+                        <input type="range" 
+                               id="location_score" 
+                               name="location_score" 
+                               class="range-input"
+                               min="1" 
+                               max="10" 
+                               value="5"
+                               oninput="updateLocationValue(this.value)">
+                        <div class="range-value-display">
+                            <span>Poor</span>
+                            <span class="current-value" id="locationValue">5</span>
+                            <span>Excellent</span>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">
+                        <span>Calculate Price</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by Machine Learning • Scikit-learn & Flask</p>
+        </footer>
+    </div>
+
+    <script>
+        function updateLocationValue(val) {
+            document.getElementById('locationValue').textContent = val;
+        }
+    </script>
+</body>
+</html>
