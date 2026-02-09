@@ -203,8 +203,8 @@ Built with ❤️ using Flask and Machine Learning
 
 ## 🔗 Links
 
-- **Live Demo:** [Your Render URL]
-- **GitHub:** [Your Repository]
+- **Live Demo:** [https://house-price-app-final.onrender.com]
+- **GitHub:** [https://github.com/Siddhesh842000/House-Price-App-FINAL]
 
 ---
 
